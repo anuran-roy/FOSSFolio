@@ -10,6 +10,4 @@ from datetime import datetime
 def run(template_str, *args, **kwargs):
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    new_str = template_str.replace(r"<% current_time %>", current_time)
-
-    return new_str
+    return template_str.replace(r"<% current_time %>", current_time)
