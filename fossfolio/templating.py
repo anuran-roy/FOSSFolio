@@ -14,11 +14,10 @@ def auto_archetype(location: str = "") -> Dict[str, Any]:
 
     archetype_possibilities: List[str] = reversed(location.split("/"))
 
-    for i in archetype_possibilities:
-        if i in mapping:
-            return mapping[i]
-
-    return mapping.get("_default")
+    return next(
+        (mapping[i] for i in archetype_possibilities if i in mapping),
+        mapping.get("_default"),
+    )
 
 
 def apply_mapping(
